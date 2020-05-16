@@ -18,7 +18,7 @@
 
 import nlp
 
-from .wmt_utils import CWMT_SUBSET_NAMES, Wmt, WmtConfig
+from .wmt_utils import Wmt, WmtConfig
 
 
 _URL = "https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/translate_ende.py"

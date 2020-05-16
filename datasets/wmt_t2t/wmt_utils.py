@@ -224,7 +224,7 @@ _TRAIN_SUBSETS = [
         target="en",
         sources={"cs", "de", "fi", "lt"},
         url="http://www.statmt.org/europarl/v9/training/europarl-v9.{src}-en.tsv.gz",
-        path=""
+        path="",
     ),
     SubDataset(
         name="gigafren",
@@ -812,7 +812,11 @@ class Wmt(ABC, nlp.GeneratorBasedBuilder):
                 # extension may not be at the end of the file path.
                 if ".tsv" in fname:
                     sub_generator = _parse_tsv
-                elif ss_name.startswith("newscommentary_v14") or ss_name.startswith("europarl_v9") or ss_name.startswith("wikititles_v1"):
+                elif (
+                    ss_name.startswith("newscommentary_v14")
+                    or ss_name.startswith("europarl_v9")
+                    or ss_name.startswith("wikititles_v1")
+                ):
                     sub_generator = functools.partial(_parse_tsv, language_pair=self.config.language_pair)
                 elif "tmx" in fname or ss_name.startswith("paracrawl_v3"):
                     sub_generator = _parse_tmx
